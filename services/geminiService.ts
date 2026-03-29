@@ -2,7 +2,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { ProductGroup, Sale } from "../types";
 
 // Initialize Gemini
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || process.env.GEMINI_API_KEY || '' });
 
 export const analyzeBusinessLogic = async (inventory: ProductGroup[], sales: Sale[]): Promise<string> => {
   try {

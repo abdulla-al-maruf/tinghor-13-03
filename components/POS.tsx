@@ -49,7 +49,7 @@ export const POS: React.FC<POSProps> = ({ inventory, onCompleteSale, settings })
        localStorage.setItem('pos_draft_name', customerName);
        localStorage.setItem('pos_draft_phone', customerPhone);
        localStorage.setItem('pos_draft_address', customerAddress);
-    }, 5000); 
+    }, 2000); 
     return () => clearInterval(timer);
   }, [cart, customerName, customerPhone, customerAddress]);
 

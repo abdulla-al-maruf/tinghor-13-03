@@ -186,7 +186,7 @@ const App: React.FC = () => {
        const newInvoiceId = prev.nextInvoiceId.toString();
        const saleWithMeta = { ...sale, invoiceId: newInvoiceId, soldBy: currentUser?.name || 'Unknown' };
        setSales(prevSales => [saleWithMeta, ...prevSales]);
-       if (sale.items.length > 0 && sale.items[0].groupId !== 'manual') {
+       if (sale.items.length > 0 && sale.items.some(item => item.groupId !== 'manual')) {
          setInventory(prevInv => prevInv.map(group => {
            const relevantItems = sale.items.filter(i => i.groupId === group.id);
            if (relevantItems.length === 0) return group;
@@ -242,7 +242,7 @@ const App: React.FC = () => {
       setSales(prevSales => {
        const sale = prevSales.find(s => s.id === saleId);
        if (!sale) return prevSales;
-       if (sale.items.length > 0 && sale.items[0].groupId !== 'manual') {
+       if (sale.items.length > 0 && sale.items.some(item => item.groupId !== 'manual')) {
           setInventory(prevInv => prevInv.map(group => {
              const relevantItems = sale.items.filter(i => i.groupId === group.id);
              if (relevantItems.length === 0) return group;
